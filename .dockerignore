@@ -1,0 +1,30 @@
+# Git
+.git
+.gitignore
+
+# Node.js
+**/node_modules
+npm-debug.log
+
+# Build результаты
+**/dist
+**/build
+**/coverage
+
+# Среда разработки
+.idea
+.vscode
+*.swp
+*.swo
+
+# ENV файлы
+**/.env
+**/.env.local
+**/.env.development
+**/.env.test
+**/.env.production
+
+# Прочее
+**/README.md
+**/docker-compose.yml
+**/.DS_Store 

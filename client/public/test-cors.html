@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест CORS</title>
+    <script>
+        function testLogin() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            fetch('http://localhost:3000/api/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+                console.log('Success:', data);
+            })
+            .catch(error => {
+                document.getElementById('result').textContent = 'Ошибка: ' + error.message;
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Тест CORS</h1>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" value="test@example.com">
+    </div>
+    <div>
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" value="password123">
+    </div>
+    <button onclick="testLogin()">Тестировать вход</button>
+    
+    <h2>Результат:</h2>
+    <pre id="result"></pre>
+</body>
+</html> 
